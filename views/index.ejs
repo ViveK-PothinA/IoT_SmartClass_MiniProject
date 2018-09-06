@@ -8,11 +8,7 @@
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous">
     </script>
-    <script src="../public/javascripts/semantic.js"></script>
-    <script>
-    $('.ui.toggle.checkbox')
-      .checkbox();
-    </script>
+    <script src="../public/javascripts/semantic.js"></script>    
   </head>
   <body style="background-color: #f6f0f2; padding:2%">
     <div class="ui centered container" style="width:80%; margin-left:10">
@@ -20,16 +16,14 @@
         <h3>WELCOME TO SMART CLASS ROOM</h3>
       </div>
       <div class="main">
-          <div class="ui form">
-            <% if(!log) { for(i=0;i< data.length ;i++){ %>
-            <div class="field">
-                <div class="ui toggle checkbox">
-                  <input type="checkbox" tabindex="0" class="hidden">
-                  <label><%= data[i].name %></label>
-                </div>
-            </div>
-           <% }} %>
-
+          <div class="form-data">
+            <form method="POST" action="/updateAllDevices">
+            <% for(var dev in data){ %>
+              <label>Device <%= dev %> </label>
+              <input name = "Device <%= dev %>" type="checkbox" <%= (data[dev] == 1) ? "checked" : "" %> >
+           <% } %>
+            <input type="submit" value="Submit">
+            </form>           
           </div>
       </div>
     </div>
