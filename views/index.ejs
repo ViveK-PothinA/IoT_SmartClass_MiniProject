@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>HELLO</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/semantic.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous">
-    </script>
-    <script src="../public/javascripts/semantic.js"></script>    
-  </head>
-  <body style="background-color: #f6f0f2; padding:2%">
-    <div class="ui centered container" style="width:80%; margin-left:10">
-      <div class="title" style="text-align: center">
-        <h3>WELCOME TO SMART CLASS ROOM</h3>
-      </div>
-      <div class="main">
-          <div class="form-data">
-            <form method="POST" action="/updateAllDevices">
-            <% for(var dev in data){ %>
-              <label>Device <%= dev %> </label>
-              <input name = "Device <%= dev %>" type="checkbox" <%= (data[dev] == 1) ? "checked" : "" %> >
-           <% } %>
-            <input type="submit" value="Submit">
-            </form>           
-          </div>
-      </div>
+
+<head>
+  <title>SmartClass Room</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-light">
+  <div class="container-fluid">
+    <div class="py-5 text-center">
+      <h3>WELCOME TO SMART CLASS ROOM</h3>
+      <p class="lead">In this mini project, electrical appliances are switched on and off remotely using NodeMCU and Relay
+        Module. A Node.js server has been hosted in Heroku.</p>
     </div>
-  </body>
+    <div class="main">
+      <form method="POST" action="/updateAllDevices">
+        <% for(var dev in data){ %>
+          <div class="form-checkbox">
+            <input class="checkbox" name="Device <%= dev %>" type="checkbox" <%=( data[dev]==1 ) ? "checked" : "" %> >
+            <label class="form-control-label">Device <%= dev %> </label>
+          </div>
+          <% } %>
+          <br>
+            <input type="submit" class="btn btn-primary" value="Update Classroom">
+      </form>
+    </div>
+  </div>
+</body>
 </html>

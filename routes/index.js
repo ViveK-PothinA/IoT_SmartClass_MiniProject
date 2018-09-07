@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var data = {'0':'0', '1':'1', '2':'1','3':'1'};
+var data = {'0':'0', '1':'1'};
 
 router.get('/', function(req, res, next) {
   // res.send(`
