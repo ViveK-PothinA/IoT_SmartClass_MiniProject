@@ -37,19 +37,19 @@ router.get('/', function(req, res, next) {
   // </ul>
   // `)
   // console.log(data.length());
-  console.log("final");
-  console.log(data);
+  // console.log("final");
+  // console.log(data);
   res.render('index', {data: data});
 
 });
 
 router.post("/updateAllDevices", function(req, res){
   // req.body = JSON.parse(JSON.stringify(req.body));
-  console.log(req.body);
+  // console.log(req.body);
   var on = [];
   var s = "";
   for(var i in req.body){
-    console.log(i.slice(7,-1));
+    // console.log(i.slice(7,-1));
     if(!data.hasOwnProperty(i.slice(7))){
       s = s + i.slice(7) + ",";
     }
@@ -57,9 +57,9 @@ router.post("/updateAllDevices", function(req, res){
       on.push(i.slice(7));
     }
   }
-  console.log(data, on);
+  // console.log(data, on);
   for(var i in data){
-    console.log("a", i, on.includes(i));
+    // console.log("a", i, on.includes(i));
     if(on.includes(i)){
       data[i] = '1';
     }
@@ -68,7 +68,7 @@ router.post("/updateAllDevices", function(req, res){
     }
   }
   on = [];
-  console.log(data);
+  // console.log(data);
   res.status(200).redirect("/");
 });
 
@@ -92,7 +92,7 @@ router.post("/registerDevice", function(req, res){
 
 router.post("/updateDevice", function(req, res){
   req.body = JSON.parse(JSON.stringify(req.body));
-  console.log(req.body);
+  // console.log(req.body);
   if(!req.body.hasOwnProperty("device") && !req.body.hasOwnProperty("val")){
       res.status(409).send(`<span>Invalid Request, try again!</span>`);
       return;
@@ -106,12 +106,12 @@ router.post("/updateDevice", function(req, res){
 
   data[device] = req.body.val;
   res.status(200).send(`<span>`+device+`'s value has been changed to `+req.body.val);
-  console.log(data);
+  // console.log(data);
 });
 
 router.get("/getStatus/:device", function(_req, res) {
   res.status(200).send(data[_req.params.device]);
-  console.log(data, " ", data[_req.params.device]);
+  // console.log(data, " ", data[_req.params.device]);
 });
 
 
